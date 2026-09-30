@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Real-time chat server
 
 Backend API for a real-time chat application using Express and Socket.io.
@@ -105,3 +106,7 @@ adapter for Socket.io presence/event synchronization.
 The browser UI is served by the same server. Start the backend and open
 `http://localhost:3000`. The frontend files are in `public/` and use the same
 Socket.io events documented above.
+=======
+# chat-server-API
+Real-time chat server API using Node.js, Express.js &amp; Socket.io.
+>>>>>>> 829480c073400b5f37f88b469d488faf332e539e
