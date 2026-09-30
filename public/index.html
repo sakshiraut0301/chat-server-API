@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realtime Chat</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="chat-card" aria-label="Realtime chat application">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">SOCKET.IO CHAT</p>
+            <h1>Realtime chat</h1>
+          </div>
+          <span id="connection-status" class="status offline">Offline</span>
+        </header>
+
+        <section id="join-panel" class="join-panel">
+          <h2>Join a room</h2>
+          <p class="muted">Choose a name and room to start chatting.</p>
+          <form id="join-form" class="join-form">
+            <label>
+              Your name
+              <input id="username" name="username" maxlength="80" placeholder="e.g. Ada" required />
+            </label>
+            <label>
+              Room
+              <input id="room" name="room" maxlength="80" value="general" required />
+            </label>
+            <button type="submit">Join room</button>
+          </form>
+          <p id="join-error" class="error" role="alert"></p>
+        </section>
+
+        <section id="chat-panel" class="chat-panel hidden">
+          <div class="room-header">
+            <div>
+              <p class="eyebrow">CURRENT ROOM</p>
+              <h2>#<span id="room-name"></span></h2>
+            </div>
+            <button id="leave-button" class="secondary" type="button">Leave</button>
+          </div>
+
+          <div class="chat-layout">
+            <div class="conversation">
+              <div id="messages" class="messages" aria-live="polite"></div>
+              <form id="message-form" class="message-form">
+                <input id="message-input" maxlength="2000" placeholder="Write a message..." autocomplete="off" required />
+                <button type="submit" aria-label="Send message">Send</button>
+              </form>
+            </div>
+            <aside class="presence-panel">
+              <div class="presence-heading">
+                <h3>Online</h3>
+                <span id="member-count" class="count">0</span>
+              </div>
+              <ul id="members" class="members"></ul>
+            </aside>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
