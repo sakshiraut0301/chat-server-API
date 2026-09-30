@@ -49,6 +49,16 @@ button.secondary { padding: 9px 13px; color: #536dfe; background: #eef1ff; }
 .members { display: grid; gap: 14px; padding: 20px 0 0; margin: 0; list-style: none; }
 .member { display: flex; align-items: center; gap: 9px; font-size: .88rem; }
 .avatar { display: grid; width: 29px; height: 29px; place-items: center; color: #536dfe; background: #eef1ff; border-radius: 50%; font-size: .75rem; font-weight: 800; }
+.api-panel { padding: 20px 30px 24px; border-top: 1px solid #e7ebf2; background: #f8fafc; }
+.api-panel-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.api-panel h3 { margin-top: 3px; font-size: .98rem; }
+.api-description { margin-top: 5px; color: #718096; font-size: .78rem; }
+.small-button { padding: 7px 10px !important; font-size: .75rem; }
+.api-log { display: grid; gap: 8px; max-height: 180px; overflow-y: auto; margin-top: 12px; }
+.api-entry { padding: 9px 11px; border: 1px solid #e0e6ef; border-radius: 8px; background: #fff; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .72rem; }
+.api-entry-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #536dfe; font-weight: 800; }
+.api-entry-time { color: #8994a7; font-weight: 500; }
+.api-entry pre { max-height: 90px; overflow: auto; margin: 6px 0 0; color: #4a5568; white-space: pre-wrap; overflow-wrap: anywhere; }
 
 @media (max-width: 700px) {
   .app-shell { padding: 0; }
@@ -59,4 +69,5 @@ button.secondary { padding: 9px 13px; color: #536dfe; background: #eef1ff; }
   .members { display: flex; flex-wrap: wrap; padding-top: 14px; }
   .messages { padding: 20px; }
   .message { max-width: 88%; }
+  .api-panel { padding: 18px 20px 22px; }
 }
