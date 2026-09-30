@@ -27,6 +27,7 @@ A beginner-friendly, modular backend API for real-time chat using **Node.js**, *
 - express-validator
 - dotenv
 - cors
+- express-rate-limit
 
 ## Project Structure
 
@@ -238,3 +239,4 @@ const socket = io('http://localhost:5000', {
 
 - All messages are stored with timestamps (`createdAt`, `updatedAt`) via Mongoose.
 - Protected REST APIs require an Authorization header containing a valid JWT.
+- API routes use basic rate limiting for safer production defaults.

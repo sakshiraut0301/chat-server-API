@@ -13,7 +13,9 @@ const getMessageHistory = async (req, res, next) => {
     let messages = [];
 
     if (roomId) {
-      messages = await Message.find({ room: roomId })
+      const roomObjectId = new mongoose.Types.ObjectId(roomId);
+
+      messages = await Message.find({ room: roomObjectId })
         .populate('sender', 'name email')
         .populate('room', 'name')
         .sort({ createdAt: 1 });
@@ -22,11 +24,13 @@ const getMessageHistory = async (req, res, next) => {
         return res.status(400).json({ message: 'Invalid userId' });
       }
 
+      const userObjectId = new mongoose.Types.ObjectId(userId);
+
       messages = await Message.find({
         room: null,
         $or: [
-          { sender: req.user._id, receiver: userId },
-          { sender: userId, receiver: req.user._id }
+          { sender: req.user._id, receiver: userObjectId },
+          { sender: userObjectId, receiver: req.user._id }
         ]
       })
         .populate('sender', 'name email')
@@ -53,7 +57,8 @@ const sendMessage = async (req, res, next) => {
     }
 
     if (roomId) {
-      const room = await Room.findById(roomId);
+      const roomObjectId = new mongoose.Types.ObjectId(roomId);
+      const room = await Room.findById(roomObjectId);
       if (!room) {
         return res.status(404).json({ message: 'Room not found' });
       }
@@ -63,10 +68,13 @@ const sendMessage = async (req, res, next) => {
       }
     }
 
+    const receiverObjectId = receiverId ? new mongoose.Types.ObjectId(receiverId) : null;
+    const roomObjectId = roomId ? new mongoose.Types.ObjectId(roomId) : null;
+
     const message = await Message.create({
       sender: req.user._id,
-      receiver: receiverId || null,
-      room: roomId || null,
+      receiver: receiverObjectId,
+      room: roomObjectId,
       content
     });
 
